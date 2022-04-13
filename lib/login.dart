@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import './dashboard.dart';
+import 'package:page_transition/page_transition.dart';
 
 class loginpage extends StatefulWidget {
   @override
@@ -136,25 +138,30 @@ class _loginpageState extends State<loginpage> {
                       SizedBox(
                         height: 50,
                       ),
-                      Container(
-                          height: 50,
-                          margin: EdgeInsets.symmetric(horizontal: 40),
-                          decoration: BoxDecoration(
-                              gradient: LinearGradient(
-                                  begin: Alignment.topCenter,
-                                  colors: [
-                                    Colors.blue.shade900,
-                                    Colors.blue.shade800,
-                                    // Colors.blue.shade400,
-                                  ]),
-                              borderRadius: BorderRadius.circular(20)),
-                          child: Center(
-                            child: Text("Login",
-                                style: GoogleFonts.roboto(
-                                  fontSize: 16,
-                                  color: Colors.white,
-                                )),
-                          ))
+                      GestureDetector(
+                        onTap: () => {
+                          Navigator.push(context, PageTransition(type: PageTransitionType.scale, alignment: Alignment.bottomCenter, child: dashboard()))
+                        },
+                        child: Container(
+                            height: 50,
+                            margin: EdgeInsets.symmetric(horizontal: 40),
+                            decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                    begin: Alignment.topCenter,
+                                    colors: [
+                                      Colors.blue.shade900,
+                                      Colors.blue.shade800,
+                                      // Colors.blue.shade400,
+                                    ]),
+                                borderRadius: BorderRadius.circular(20)),
+                            child: Center(
+                              child: Text("Login",
+                                  style: GoogleFonts.roboto(
+                                    fontSize: 16,
+                                    color: Colors.white,
+                                  )),
+                            )),
+                      )
                     ],
                   ),
                 ),
