@@ -140,7 +140,12 @@ class _loginpageState extends State<loginpage> {
                       ),
                       GestureDetector(
                         onTap: () => {
-                          Navigator.push(context, PageTransition(type: PageTransitionType.scale, alignment: Alignment.bottomCenter, child: dashboard()))
+                          Navigator.pushReplacement(
+                              context,
+                              PageTransition(
+                                  type: PageTransitionType.scale,
+                                  alignment: Alignment.bottomCenter,
+                                  child: dashboard()))
                         },
                         child: Container(
                             height: 50,
