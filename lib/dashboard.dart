@@ -103,10 +103,9 @@ class _dashboardState extends State<dashboard> {
           onTap: onTabTapped,
           backgroundColor: Colors.blue.shade900,
           items: [
+            BottomNavigationBarItem(icon: Icon(Icons.badge), label: "Details"),
             BottomNavigationBarItem(
-                icon: Icon(Icons.abc_outlined), label: "Details"),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.abc_outlined), label: "Application Status")
+                icon: Icon(Icons.article), label: "Application Status")
           ],
         ),
       ),

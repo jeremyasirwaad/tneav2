@@ -29,36 +29,46 @@ class _loginpageState extends State<loginpage> {
             ),
             Padding(
               padding: EdgeInsets.all(30),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // Image.asset(
-                  //   'asserts/logo.webp',
-                  //   height: 80,
-                  //   width: 80,
-                  // ),
-                  Text(
-                    "LOGIN",
-                    style: GoogleFonts.roboto(
-                      color: Colors.white,
-                      fontSize: 40,
+              child: Row(children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // Image.asset(
+                    //   'asserts/logo.webp',
+                    //   height: 80,
+                    //   width: 80,
+                    // ),
+                    Text(
+                      "LOGIN",
+                      style: GoogleFonts.roboto(
+                        color: Colors.white,
+                        fontSize: 40,
+                      ),
                     ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    "Official TNEA Mobile App",
-                    style: GoogleFonts.roboto(
-                      color: Colors.white,
-                      fontSize: 15,
+                    SizedBox(
+                      height: 10,
                     ),
+                    Text(
+                      "Official TNEA Mobile App",
+                      style: GoogleFonts.roboto(
+                        color: Colors.white,
+                        fontSize: 15,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    )
+                  ],
+                ),
+                Container(
+                  padding: EdgeInsets.only(left: 15, bottom: 10),
+                  child: Image.asset(
+                    "asserts/logo.webp",
+                    height: 80,
+                    width: 80,
                   ),
-                  SizedBox(
-                    height: 20,
-                  )
-                ],
-              ),
+                )
+              ]),
             ),
             Expanded(
               child: Container(
