@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:timeline_tile/timeline_tile.dart';
 import './model//listinfo.dart';
 import 'package:page_transition/page_transition.dart';
 import './login.dart';
 import './model/Statusinfo.dart';
+// import 'package:timelines/timelines.dart';
 
 class dashboard extends StatefulWidget {
   @override
@@ -46,7 +48,8 @@ class _dashboardState extends State<dashboard> {
 
     final _pageoptions = [
       Detailspage(hightofdev: hightofdev),
-      Statuspage(hightofdev: hightofdev)
+      Statuspage(hightofdev: hightofdev),
+      progress(hightofdev: hightofdev)
     ];
     return Scaffold(
       appBar: appBar,
@@ -105,11 +108,118 @@ class _dashboardState extends State<dashboard> {
           items: [
             BottomNavigationBarItem(icon: Icon(Icons.badge), label: "Details"),
             BottomNavigationBarItem(
-                icon: Icon(Icons.article), label: "Application Status")
+                icon: Icon(Icons.article), label: "Application Status"),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.bar_chart), label: "Progress")
           ],
         ),
       ),
     );
+  }
+}
+
+class progress extends StatelessWidget {
+  const progress({
+    Key? key,
+    required this.hightofdev,
+  }) : super(key: key);
+
+  final double hightofdev;
+
+  @override
+  Widget build(BuildContext context) {
+    final double linehieght = (hightofdev * 0.75 - 30 - 130) / 6;
+    return Padding(
+        padding: EdgeInsets.all(20),
+        child: Container(
+          height: hightofdev * 0.75 - 30,
+          width: double.infinity,
+          // color: Colors.black,
+          child: Column(mainAxisSize: MainAxisSize.min, children: [
+            TimelineTile(
+              alignment: TimelineAlign.start,
+              indicatorStyle:
+                  IndicatorStyle(width: 20, color: Colors.blue.shade800),
+              isFirst: true,
+              // afterLineStyle: LineStyle(color: Colors.grey.shade700),
+              endChild: Container(
+                alignment: Alignment.centerLeft,
+                margin: EdgeInsets.only(left: 20),
+                child: Text("Appication Completed"),
+                height: linehieght,
+                // color: Colors.black,
+              ),
+            ),
+            TimelineTile(
+              indicatorStyle:
+                  IndicatorStyle(width: 20, color: Colors.blue.shade800),
+              // isFirst: true,
+              // afterLineStyle: LineStyle(color: Colors.grey.shade700),
+              endChild: Container(
+                alignment: Alignment.centerLeft,
+                margin: EdgeInsets.only(left: 20),
+                child: Text("Appication Completed"),
+                height: linehieght,
+                // color: Colors.black,
+              ),
+            ),
+            TimelineTile(
+              indicatorStyle:
+                  IndicatorStyle(width: 20, color: Colors.blue.shade800),
+              // isFirst: true,
+              // afterLineStyle: LineStyle(color: Colors.grey.shade700),
+              endChild: Container(
+                alignment: Alignment.centerLeft,
+                margin: EdgeInsets.only(left: 20),
+                child: Text("Appication Completed"),
+                height: linehieght,
+                // color: Colors.black,
+              ),
+            ),
+            TimelineTile(
+              indicatorStyle:
+                  IndicatorStyle(width: 20, color: Colors.blue.shade800),
+              // isFirst: true,
+              // afterLineStyle: LineStyle(color: Colors.grey.shade700),
+              endChild: Container(
+                alignment: Alignment.centerLeft,
+                margin: EdgeInsets.only(left: 20),
+                child: Text("Appication Completed"),
+                height: linehieght,
+                // color: Colors.black,
+              ),
+            ),
+            TimelineTile(
+              indicatorStyle:
+                  IndicatorStyle(width: 20, color: Colors.blue.shade800),
+              // isFirst: true,
+              // afterLineStyle: LineStyle(color: Colors.grey.shade700),
+              endChild: Container(
+                alignment: Alignment.centerLeft,
+                margin: EdgeInsets.only(left: 20),
+                child: Text("Appication Completed"),
+                height: linehieght,
+                // color: Colors.black,
+              ),
+            ),
+            TimelineTile(
+              indicatorStyle:
+                  IndicatorStyle(width: 20, color: Colors.blue.shade800),
+              isLast: true,
+              // isFirst: true,
+              // afterLineStyle: LineStyle(color: Colors.grey.shade700),
+              endChild: Container(
+                alignment: Alignment.centerLeft,
+                margin: EdgeInsets.only(left: 20),
+                child: Text("Appication Completed"),
+                height: linehieght,
+
+                // color: Colors.black,
+              ),
+            )
+            // )
+          ]),
+        ));
   }
 }
 
