@@ -5,9 +5,12 @@ import './model//listinfo.dart';
 import 'package:page_transition/page_transition.dart';
 import './login.dart';
 import './model/Statusinfo.dart';
+import './datamodel/userdata.dart';
 // import 'package:timelines/timelines.dart';
 
 class dashboard extends StatefulWidget {
+  final Userdata data;
+  dashboard(this.data);
   @override
   State<dashboard> createState() => _dashboardState();
 }
@@ -47,7 +50,7 @@ class _dashboardState extends State<dashboard> {
     int _selectedpage = 0;
 
     final _pageoptions = [
-      Detailspage(hightofdev: hightofdev),
+      Detailspage(hightofdev: hightofdev, data: widget.data),
       Statuspage(hightofdev: hightofdev),
       progress(hightofdev: hightofdev)
     ];
@@ -78,13 +81,13 @@ class _dashboardState extends State<dashboard> {
                             shape: BoxShape.circle,
                             color: Colors.black,
                             image: DecorationImage(
-                                image: AssetImage("asserts/bankimg.jpeg"),
+                                image: NetworkImage(widget.data.img),
                                 fit: BoxFit.cover)))),
                 Positioned(
                     top: 30,
                     right: 40,
                     child: Container(
-                      child: Text("Jeremy Asirwaad",
+                      child: Text(widget.data.name,
                           style: GoogleFonts.roboto(
                               color: Colors.white, fontSize: 20)),
                     ))
@@ -224,12 +227,11 @@ class progress extends StatelessWidget {
 }
 
 class Detailspage extends StatelessWidget {
-  const Detailspage({
-    Key? key,
-    required this.hightofdev,
-  }) : super(key: key);
+  const Detailspage({Key? key, required this.hightofdev, required this.data})
+      : super(key: key);
 
   final double hightofdev;
+  final Userdata data;
 
   @override
   Widget build(BuildContext context) {
@@ -248,13 +250,13 @@ class Detailspage extends StatelessWidget {
           SizedBox(
             height: 35,
           ),
-          listinfo("Application No", 189654230, false),
-          listinfo("12th Register Number", 2018118, false),
-          listinfo("12th Roll number", 741258, false),
-          listinfo("Aadhaar number", "1234/12345/12345", false),
-          listinfo("Community", "Chowdry", false),
-          listinfo("Nativity", "Indian", false),
-          listinfo("Group code", "092", false),
+          listinfo("Application No", data.appno, false),
+          listinfo("12th Register Number", data.s12regno, false),
+          listinfo("12th Roll number", data.s12rollno, false),
+          listinfo("Aadhaar number", data.adharno, false),
+          listinfo("Community", data.comunity, false),
+          listinfo("Nativity", data.Nativity, false),
+          listinfo("Group code", data.Groupcode, false),
           Text(
             "Academic Details",
             style:
@@ -263,11 +265,11 @@ class Detailspage extends StatelessWidget {
           SizedBox(
             height: 35,
           ),
-          listinfo("Sub 1 mark", "95", false),
-          listinfo("Sub 2 mark", "95", false),
-          listinfo("Sub 3 mark", "95", false),
-          listinfo("Cutoff", "189.5", false),
-          listinfo("Rank", "Not Yet Published", true),
+          listinfo("Sub 1 mark", data.s1, false),
+          listinfo("Sub 2 mark", data.s2, false),
+          listinfo("Sub 3 mark", data.s3, false),
+          listinfo("Cutoff", data.coff, false),
+          listinfo("Rank", data.rank, true),
           Text(
             "Special Reservation",
             style:
@@ -276,10 +278,12 @@ class Detailspage extends StatelessWidget {
           SizedBox(
             height: 35,
           ),
-          listinfo("Physically challenged", "No", false),
-          listinfo("Ex-servicemen", "No", false),
-          listinfo("Sports", "No", false),
-          listinfo("Studied in Government School", "No", false),
+          listinfo(
+              "Physically challenged", data.pchalage ? "Yes" : "No", false),
+          listinfo("Ex-servicemen", data.exser ? "Yes" : "No", false),
+          listinfo("Sports", data.sport ? "Yes" : "No", false),
+          listinfo("Studied in Government School", data.studgovt ? "Yes" : "No",
+              false),
         ]),
       ),
     );

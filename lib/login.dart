@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'dart:html';
+
 import './datamodel/userdata.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -29,23 +29,49 @@ class _loginpageState extends State<loginpage> {
           "password": password
         });
 
+    // print(res.body);
+    // final parsedJson = jsonDecode(res.body);
+    // final data = Userdata.fromJson(jsonDecode(res.body));
+    // print(data.name);
+    // print(parsedJson);
+    // final user = User
+
     var data = jsonDecode(res.body);
     if (!data['status']) {
-      setState(() {
-        errorsg = data['message'];
-      });
+      // setState(() {
+      //   errorsg = data['message'];
+      // });
+      showDialog(
+          context: context,
+          builder: (_) => AlertDialog(
+                title: Text("Alert"),
+                content: Text("Invalid Username or Password"),
+                actions: [
+                  TextButton(
+                      onPressed: () {
+                        onPressed:
+                        onPressed:
+                        () => Navigator.pop(context);
+                      },
+                      child: Text("OK"))
+                ],
+              ),
+          barrierDismissible: true);
     }
+
     if (data['status']) {
       //  user = Userdata.fromJson(data);
-      print(data);
+      // final parsedjson = jsonDecode(data);
+      final usermodeldata = Userdata.fromJson(data['data']);
+
       Navigator.pushReplacement(
           context,
           PageTransition(
               type: PageTransitionType.scale,
               alignment: Alignment.bottomCenter,
-              child: dashboard()));
+              child: dashboard(usermodeldata)));
     }
-    // print(res.body);
+    print(res.body);
   }
 
   @override

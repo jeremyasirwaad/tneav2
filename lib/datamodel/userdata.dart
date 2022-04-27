@@ -1,38 +1,39 @@
 import 'package:flutter/material.dart';
 
 class Userdata {
-  Userdata({
-    required this.email,
-    required this.data,
-    required this.cutoff,
-    required this.name,
-    required this.phone,
-    required this.appno,
-    required this.Groupcode,
-    required this.Nativity,
-    required this.adharno,
-    required this.coff,
-    required this.comunity,
-    required this.exser,
-    required this.pchalage,
-    required this.rank,
-    required this.s1,
-    required this.s2,
-    required this.s3,
-    required this.sport,
-    required this.studgovt,
-    required this.s12regno,
-    required this.s12rollno,
-  });
-  late final String email;
-  late final String data;
-  late final int cutoff;
+  Userdata(
+      {
+      // required this.email,
+      // required this.data,
+      // required this.cutoff,
+      required this.name,
+      required this.phone,
+      required this.appno,
+      required this.Groupcode,
+      required this.Nativity,
+      required this.adharno,
+      required this.coff,
+      required this.comunity,
+      required this.exser,
+      required this.pchalage,
+      required this.rank,
+      required this.s1,
+      required this.s2,
+      required this.s3,
+      required this.sport,
+      required this.studgovt,
+      required this.s12regno,
+      required this.s12rollno,
+      required this.img});
+  // late final String email;
+  // late final String data;
+  // late final int cutoff;
   late final String name;
   late final String phone;
   late final int appno;
   late final int Groupcode;
   late final String Nativity;
-  late final String adharno;
+  late final int adharno;
   late final double coff;
   late final String comunity;
   late final bool exser;
@@ -45,11 +46,12 @@ class Userdata {
   late final bool studgovt;
   late final int s12regno;
   late final int s12rollno;
-  
-  Userdata.fromJson(Map<String, dynamic> json){
-    email = json['email'];
-    data = json['data'];
-    cutoff = json['cutoff'];
+  late final String img;
+
+  Userdata.fromJson(Map<String, dynamic> json) {
+    // email = json['email'];
+    // data = json['data'];
+    // cutoff = json['cutoff'];
     name = json['name'];
     phone = json['phone'];
     appno = json['appno'];
@@ -68,13 +70,14 @@ class Userdata {
     studgovt = json['studgovt'];
     s12regno = json['s12regno'];
     s12rollno = json['s12rollno'];
+    img = json['img'];
   }
 
   Map<String, dynamic> toJson() {
     final _data = <String, dynamic>{};
-    _data['email'] = email;
-    _data['data'] = data;
-    _data['cutoff'] = cutoff;
+    // _data['email'] = email;
+    // _data['data'] = data;
+    // _data['cutoff'] = cutoff;
     _data['name'] = name;
     _data['phone'] = phone;
     _data['appno'] = appno;
@@ -93,6 +96,7 @@ class Userdata {
     _data['studgovt'] = studgovt;
     _data['s12regno'] = s12regno;
     _data['s12rollno'] = s12rollno;
+    _data['img'] = img;
     return _data;
   }
 }
