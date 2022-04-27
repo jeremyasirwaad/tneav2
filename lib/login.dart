@@ -1,13 +1,14 @@
 import 'dart:convert';
-
 import './datamodel/userdata.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import './dashboard.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:http/http.dart' as http;
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class loginpage extends StatefulWidget {
+  bool loading = false;
   @override
   State<loginpage> createState() => _loginpageState();
 }
@@ -20,7 +21,10 @@ class _loginpageState extends State<loginpage> {
   var errorsg = "";
   late Userdata user;
   Future save() async {
-    var res = await http.post(Uri.parse("http://localhost:5000/login"),
+    setState(() {
+      widget.loading = true;
+    });
+    var res = await http.post(Uri.parse("https://mytnea.herokuapp.com/login"),
         headers: <String, String>{
           'Context-Type': 'application/json;charSet=UTF-8'
         },
@@ -38,21 +42,17 @@ class _loginpageState extends State<loginpage> {
 
     var data = jsonDecode(res.body);
     if (!data['status']) {
-      // setState(() {
-      //   errorsg = data['message'];
-      // });
+      setState(() {
+        widget.loading = false;
+      });
       showDialog(
           context: context,
-          builder: (_) => AlertDialog(
+          builder: (context) => AlertDialog(
                 title: Text("Alert"),
                 content: Text("Invalid Username or Password"),
                 actions: [
                   TextButton(
-                      onPressed: () {
-                        onPressed:
-                        onPressed:
-                        () => Navigator.pop(context);
-                      },
+                      onPressed: () => Navigator.pop(context),
                       child: Text("OK"))
                 ],
               ),
@@ -63,7 +63,6 @@ class _loginpageState extends State<loginpage> {
       //  user = Userdata.fromJson(data);
       // final parsedjson = jsonDecode(data);
       final usermodeldata = Userdata.fromJson(data['data']);
-
       Navigator.pushReplacement(
           context,
           PageTransition(
@@ -77,20 +76,36 @@ class _loginpageState extends State<loginpage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.blue.shade900,
+        elevation: 0,
+        actions: [
+          widget.loading
+              ? Container(
+                  margin: EdgeInsets.only(right: 13),
+                  child: SpinKitCircle(
+                    color: Colors.white,
+                    size: 37.0,
+                  ),
+                )
+              : Container()
+        ],
+      ),
       resizeToAvoidBottomInset: false,
       body: Container(
         width: double.infinity,
-        decoration: BoxDecoration(
-            gradient: LinearGradient(begin: Alignment.topCenter, colors: [
-          Colors.blue.shade900,
-          Colors.blue.shade800,
-          Colors.blue.shade400,
-        ])),
+        color: Colors.blue.shade900,
+        // decoration: BoxDecoration(
+        //     gradient: LinearGradient(begin: Alignment.topCenter, colors: [
+        //   Colors.blue.shade900,
+        //   Colors.blue.shade800,
+        //   Colors.blue.shade400,
+        // ])),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(
-              height: 80,
+              height: 0,
             ),
             Padding(
               padding: EdgeInsets.all(30),
