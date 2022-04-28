@@ -7,6 +7,8 @@ import './login.dart';
 import './model/Statusinfo.dart';
 import './datamodel/userdata.dart';
 // import 'package:timelines/timelines.dart';
+import 'package:im_stepper/main.dart';
+import 'package:im_stepper/stepper.dart';
 
 class dashboard extends StatefulWidget {
   final Userdata data;
@@ -138,90 +140,152 @@ class progress extends StatelessWidget {
           height: hightofdev * 0.75 - 30,
           width: double.infinity,
           // color: Colors.black,
-          child: Column(mainAxisSize: MainAxisSize.min, children: [
-            TimelineTile(
-              alignment: TimelineAlign.start,
-              indicatorStyle:
-                  IndicatorStyle(width: 20, color: Colors.blue.shade800),
-              isFirst: true,
-              // afterLineStyle: LineStyle(color: Colors.grey.shade700),
-              endChild: Container(
-                alignment: Alignment.centerLeft,
-                margin: EdgeInsets.only(left: 20),
-                child: Text("Appication Completed"),
-                height: linehieght,
-                // color: Colors.black,
+          child: Row(
+            children: [
+              Container(
+                height: hightofdev * 0.75,
+                width: MediaQuery.of(context).size.width / 6,
+                child: IconStepper(
+                  direction: Axis.vertical,
+                  enableNextPreviousButtons: false,
+                  enableStepTapping: false,
+                  stepColor: Colors.green,
+                  activeStepBorderColor: Colors.white,
+                  activeStepBorderWidth: 0.0,
+                  activeStepBorderPadding: 0.0,
+                  lineColor: Colors.green,
+                  lineLength: 70.0,
+                  lineDotRadius: 2.0,
+                  stepRadius: 16.0,
+                  icons: [
+                    Icon(Icons.radio_button_checked, color: Colors.green),
+                    Icon(Icons.check, color: Colors.white),
+                    Icon(Icons.check, color: Colors.white),
+                    Icon(Icons.check, color: Colors.white),
+                    Icon(Icons.check, color: Colors.white),
+                    Icon(Icons.check, color: Colors.white),
+                  ],
+                ),
               ),
-            ),
-            TimelineTile(
-              indicatorStyle:
-                  IndicatorStyle(width: 20, color: Colors.blue.shade800),
-              // isFirst: true,
-              // afterLineStyle: LineStyle(color: Colors.grey.shade700),
-              endChild: Container(
-                alignment: Alignment.centerLeft,
-                margin: EdgeInsets.only(left: 20),
-                child: Text("Appication Completed"),
-                height: linehieght,
-                // color: Colors.black,
-              ),
-            ),
-            TimelineTile(
-              indicatorStyle:
-                  IndicatorStyle(width: 20, color: Colors.blue.shade800),
-              // isFirst: true,
-              // afterLineStyle: LineStyle(color: Colors.grey.shade700),
-              endChild: Container(
-                alignment: Alignment.centerLeft,
-                margin: EdgeInsets.only(left: 20),
-                child: Text("Appication Completed"),
-                height: linehieght,
-                // color: Colors.black,
-              ),
-            ),
-            TimelineTile(
-              indicatorStyle:
-                  IndicatorStyle(width: 20, color: Colors.blue.shade800),
-              // isFirst: true,
-              // afterLineStyle: LineStyle(color: Colors.grey.shade700),
-              endChild: Container(
-                alignment: Alignment.centerLeft,
-                margin: EdgeInsets.only(left: 20),
-                child: Text("Appication Completed"),
-                height: linehieght,
-                // color: Colors.black,
-              ),
-            ),
-            TimelineTile(
-              indicatorStyle:
-                  IndicatorStyle(width: 20, color: Colors.blue.shade800),
-              // isFirst: true,
-              // afterLineStyle: LineStyle(color: Colors.grey.shade700),
-              endChild: Container(
-                alignment: Alignment.centerLeft,
-                margin: EdgeInsets.only(left: 20),
-                child: Text("Appication Completed"),
-                height: linehieght,
-                // color: Colors.black,
-              ),
-            ),
-            TimelineTile(
-              indicatorStyle:
-                  IndicatorStyle(width: 20, color: Colors.blue.shade800),
-              isLast: true,
-              // isFirst: true,
-              // afterLineStyle: LineStyle(color: Colors.grey.shade700),
-              endChild: Container(
-                alignment: Alignment.centerLeft,
-                margin: EdgeInsets.only(left: 20),
-                child: Text("Appication Completed"),
-                height: linehieght,
-
-                // color: Colors.black,
-              ),
-            )
-            // )
-          ]),
+              Expanded(
+                  child: ListView(
+                children: [
+                  Row(
+                    children: [
+                      Container(
+                        // color: Colors.black,
+                        width: MediaQuery.of(context).size.width / 3,
+                        child: ListTile(
+                          contentPadding: EdgeInsets.symmetric(vertical: 16.0),
+                          leading: Icon(
+                            Icons.home,
+                            size: 38.0,
+                            color: Colors.blue.shade900,
+                          ),
+                          title: Text(
+                            "Application",
+                            style: TextStyle(fontSize: 18.0),
+                          ),
+                          subtitle: Text(
+                            "process On",
+                            style: TextStyle(fontSize: 16.0),
+                          ),
+                        ),
+                      ),
+                      Text(
+                        "Application",
+                        style: TextStyle(fontSize: 18.0),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Container(
+                        // color: Colors.black,
+                        width: MediaQuery.of(context).size.width / 3,
+                        child: ListTile(
+                          contentPadding: EdgeInsets.symmetric(vertical: 16.0),
+                          leading: Icon(
+                            Icons.home,
+                            size: 38.0,
+                            color: Colors.blue.shade900,
+                          ),
+                          title: Text(
+                            "Application",
+                            style: TextStyle(fontSize: 18.0),
+                          ),
+                          subtitle: Text(
+                            "process On",
+                            style: TextStyle(fontSize: 16.0),
+                          ),
+                        ),
+                      ),
+                      Text(
+                        "Application",
+                        style: TextStyle(fontSize: 18.0),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Container(
+                        // color: Colors.black,
+                        width: MediaQuery.of(context).size.width / 3,
+                        child: ListTile(
+                          contentPadding: EdgeInsets.symmetric(vertical: 16.0),
+                          leading: Icon(
+                            Icons.home,
+                            size: 38.0,
+                            color: Colors.blue.shade900,
+                          ),
+                          title: Text(
+                            "Application",
+                            style: TextStyle(fontSize: 18.0),
+                          ),
+                          subtitle: Text(
+                            "process On",
+                            style: TextStyle(fontSize: 16.0),
+                          ),
+                        ),
+                      ),
+                      Text(
+                        "Application",
+                        style: TextStyle(fontSize: 18.0),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Container(
+                        // color: Colors.black,
+                        width: MediaQuery.of(context).size.width / 3,
+                        child: ListTile(
+                          contentPadding: EdgeInsets.symmetric(vertical: 16.0),
+                          leading: Icon(
+                            Icons.home,
+                            size: 38.0,
+                            color: Colors.blue.shade900,
+                          ),
+                          title: Text(
+                            "Application",
+                            style: TextStyle(fontSize: 18.0),
+                          ),
+                          subtitle: Text(
+                            "process On",
+                            style: TextStyle(fontSize: 16.0),
+                          ),
+                        ),
+                      ),
+                      Text(
+                        "Application",
+                        style: TextStyle(fontSize: 18.0),
+                      ),
+                    ],
+                  ),
+                ],
+              )),
+            ],
+          ),
         ));
   }
 }

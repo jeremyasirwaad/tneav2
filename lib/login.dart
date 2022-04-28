@@ -6,21 +6,42 @@ import './dashboard.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
+import 'package:app_settings/app_settings.dart';
 
 class loginpage extends StatefulWidget {
   bool loading = false;
+
   @override
   State<loginpage> createState() => _loginpageState();
 }
 
 class _loginpageState extends State<loginpage> {
   final _formKey = GlobalKey<FormState>();
+  bool hasinternet = true;
   bool hidepass = true;
   String? email;
   String? password;
   var errorsg = "";
   late Userdata user;
   Future save() async {
+    hasinternet = await InternetConnectionChecker().hasConnection;
+    if (!hasinternet) {
+      showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+                title: const Text("Alert"),
+                content:
+                    const Text("check your internet connection and try again"),
+                actions: [
+                  TextButton(
+                      onPressed: () => AppSettings.openDeviceSettings(),
+                      child: const Text("Turn On")),
+                ],
+              ),
+          barrierDismissible: true);
+      return 0;
+    }
     setState(() {
       widget.loading = true;
     });
