@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "232365654435",
+    "project_id": "fcm-test-2-fc850",
+    "storage_bucket": "fcm-test-2-fc850.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:232365654435:android:3c459eec004e5302bc5a16",
+        "android_client_info": {
+          "package_name": "com.example.tneav3"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "232365654435-n49of40papugrnh20ult132kbcucdgon.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPlSWVyY6puFADk0GaugHeqi5Ho09qLnE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "232365654435-n49of40papugrnh20ult132kbcucdgon.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
