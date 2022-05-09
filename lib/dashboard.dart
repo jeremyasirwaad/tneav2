@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:timeline_tile/timeline_tile.dart';
+// import 'package:timelines/timelines.dart';
 import './model//listinfo.dart';
 import 'package:page_transition/page_transition.dart';
 import './login.dart';
 import './model/Statusinfo.dart';
 import './datamodel/userdata.dart';
-// import 'package:timelines/timelines.dart';
+import 'package:timelines/timelines.dart';
 import 'package:im_stepper/main.dart';
 import 'package:im_stepper/stepper.dart';
 
@@ -140,150 +141,13 @@ class progress extends StatelessWidget {
           height: hightofdev * 0.75 - 30,
           width: double.infinity,
           // color: Colors.black,
-          child: Row(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Container(
-                height: hightofdev * 0.75,
-                width: MediaQuery.of(context).size.width / 6,
-                child: IconStepper(
-                  direction: Axis.vertical,
-                  enableNextPreviousButtons: false,
-                  enableStepTapping: false,
-                  stepColor: Colors.green,
-                  activeStepBorderColor: Colors.white,
-                  activeStepBorderWidth: 0.0,
-                  activeStepBorderPadding: 0.0,
-                  lineColor: Colors.green,
-                  lineLength: 70.0,
-                  lineDotRadius: 2.0,
-                  stepRadius: 16.0,
-                  icons: [
-                    Icon(Icons.radio_button_checked, color: Colors.green),
-                    Icon(Icons.check, color: Colors.white),
-                    Icon(Icons.check, color: Colors.white),
-                    Icon(Icons.check, color: Colors.white),
-                    Icon(Icons.check, color: Colors.white),
-                    Icon(Icons.check, color: Colors.white),
-                  ],
-                ),
-              ),
-              Expanded(
-                  child: ListView(
-                children: [
-                  Row(
-                    children: [
-                      Container(
-                        // color: Colors.black,
-                        width: MediaQuery.of(context).size.width / 3,
-                        child: ListTile(
-                          contentPadding: EdgeInsets.symmetric(vertical: 16.0),
-                          leading: Icon(
-                            Icons.home,
-                            size: 38.0,
-                            color: Colors.blue.shade900,
-                          ),
-                          title: Text(
-                            "Application",
-                            style: TextStyle(fontSize: 18.0),
-                          ),
-                          subtitle: Text(
-                            "process On",
-                            style: TextStyle(fontSize: 16.0),
-                          ),
-                        ),
-                      ),
-                      Text(
-                        "Application",
-                        style: TextStyle(fontSize: 18.0),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Container(
-                        // color: Colors.black,
-                        width: MediaQuery.of(context).size.width / 3,
-                        child: ListTile(
-                          contentPadding: EdgeInsets.symmetric(vertical: 16.0),
-                          leading: Icon(
-                            Icons.home,
-                            size: 38.0,
-                            color: Colors.blue.shade900,
-                          ),
-                          title: Text(
-                            "Application",
-                            style: TextStyle(fontSize: 18.0),
-                          ),
-                          subtitle: Text(
-                            "process On",
-                            style: TextStyle(fontSize: 16.0),
-                          ),
-                        ),
-                      ),
-                      Text(
-                        "Application",
-                        style: TextStyle(fontSize: 18.0),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Container(
-                        // color: Colors.black,
-                        width: MediaQuery.of(context).size.width / 3,
-                        child: ListTile(
-                          contentPadding: EdgeInsets.symmetric(vertical: 16.0),
-                          leading: Icon(
-                            Icons.home,
-                            size: 38.0,
-                            color: Colors.blue.shade900,
-                          ),
-                          title: Text(
-                            "Application",
-                            style: TextStyle(fontSize: 18.0),
-                          ),
-                          subtitle: Text(
-                            "process On",
-                            style: TextStyle(fontSize: 16.0),
-                          ),
-                        ),
-                      ),
-                      Text(
-                        "Application",
-                        style: TextStyle(fontSize: 18.0),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Container(
-                        // color: Colors.black,
-                        width: MediaQuery.of(context).size.width / 3,
-                        child: ListTile(
-                          contentPadding: EdgeInsets.symmetric(vertical: 16.0),
-                          leading: Icon(
-                            Icons.home,
-                            size: 38.0,
-                            color: Colors.blue.shade900,
-                          ),
-                          title: Text(
-                            "Application",
-                            style: TextStyle(fontSize: 18.0),
-                          ),
-                          subtitle: Text(
-                            "process On",
-                            style: TextStyle(fontSize: 16.0),
-                          ),
-                        ),
-                      ),
-                      Text(
-                        "Application",
-                        style: TextStyle(fontSize: 18.0),
-                      ),
-                    ],
-                  ),
-                ],
-              )),
+              // TimelineTile(
+
+              // )
             ],
           ),
         ));
