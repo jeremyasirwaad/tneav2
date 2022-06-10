@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 // import 'package:timelines/timelines.dart';
@@ -55,7 +56,6 @@ class _dashboardState extends State<dashboard> {
     final _pageoptions = [
       Detailspage(hightofdev: hightofdev, data: widget.data),
       Statuspage(hightofdev: hightofdev),
-      progress(hightofdev: hightofdev)
     ];
     return Scaffold(
       appBar: appBar,
@@ -115,42 +115,10 @@ class _dashboardState extends State<dashboard> {
             BottomNavigationBarItem(icon: Icon(Icons.badge), label: "Details"),
             BottomNavigationBarItem(
                 icon: Icon(Icons.article), label: "Application Status"),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.bar_chart), label: "Progress")
           ],
         ),
       ),
     );
-  }
-}
-
-class progress extends StatelessWidget {
-  const progress({
-    Key? key,
-    required this.hightofdev,
-  }) : super(key: key);
-
-  final double hightofdev;
-
-  @override
-  Widget build(BuildContext context) {
-    final double linehieght = (hightofdev * 0.75 - 30 - 130) / 6;
-    return Padding(
-        padding: EdgeInsets.all(20),
-        child: Container(
-          height: hightofdev * 0.75 - 30,
-          width: double.infinity,
-          // color: Colors.black,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              // TimelineTile(
-
-              // )
-            ],
-          ),
-        ));
   }
 }
 
@@ -218,7 +186,7 @@ class Detailspage extends StatelessWidget {
   }
 }
 
-class Statuspage extends StatelessWidget {
+class Statuspage extends StatefulWidget {
   const Statuspage({
     Key? key,
     required this.hightofdev,
@@ -227,33 +195,233 @@ class Statuspage extends StatelessWidget {
   final double hightofdev;
 
   @override
+  State<Statuspage> createState() => _StatuspageState();
+}
+
+class _StatuspageState extends State<Statuspage> {
+  List<bool> isopen = [false, false, false, false, false];
+
+  @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.all(20),
       child: Container(
-        width: double.infinity,
-        height: hightofdev * 0.75 - 30,
-        // decoration: BoxDecoration(color: Colors.black),
-        child: ListView(children: [
-          Text(
-            "Application Status",
-            style:
-                GoogleFonts.roboto(fontWeight: FontWeight.w500, fontSize: 18),
-          ),
-          SizedBox(
-            height: 35,
-          ),
-          Statusinfo("Registration", "Completed", true),
-          Statusinfo("Certificate Verification", "Rejected", false),
-          Statusinfo("Tentative allotment", "Alloted", true),
-          Statusinfo("Tentative allotment confirmation status",
-              "Not Yet Confirmed", false),
-          Statusinfo("Tentative allotment confirmation chosen",
-              "Government College of Technology", true),
-          Statusinfo("Provisional allotment generated", "No", false),
-          Statusinfo("Joined college", "No", false),
-        ]),
-      ),
+          width: double.infinity,
+          height: widget.hightofdev * 0.75 - 30,
+          // decoration: BoxDecoration(color: Colors.black),
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: EdgeInsets.all(8),
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Application Status",
+                      style: GoogleFonts.roboto(
+                          fontWeight: FontWeight.w500, fontSize: 18),
+                    ),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    ExpansionPanelList(
+                      expansionCallback: (int index, bool isExpanded) {
+                        setState(() {
+                          isopen[index] = !isopen[index];
+                        });
+                      },
+                      children: [
+                        ExpansionPanel(
+                          headerBuilder:
+                              (BuildContext context, bool isExpanded) {
+                            return Container(
+                              height: 0,
+                              child: ListTile(
+                                trailing: Icon(
+                                  Icons.check,
+                                  color: Colors.green,
+                                  size: 27,
+                                ),
+                                title: Text('Registration'),
+                              ),
+                            );
+                          },
+                          body: Container(
+                            // height: 0,
+                            child: ListTile(
+                              title: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(children: [
+                                    Text("Payment Status :"),
+                                    Text(
+                                      " Completed",
+                                      style: TextStyle(color: Colors.green),
+                                    )
+                                  ]),
+                                  Row(children: [
+                                    Text("Certificate Upload :"),
+                                    Text(
+                                      " Completed",
+                                      style: TextStyle(color: Colors.green),
+                                    )
+                                  ]),
+                                ],
+                              ),
+                              subtitle: Container(
+                                  margin: EdgeInsets.only(top: 20),
+                                  child: Text("24/7/2022 - 22/8/2022")),
+                            ),
+                          ),
+                          isExpanded: isopen[0],
+                        ),
+                        ExpansionPanel(
+                          headerBuilder:
+                              (BuildContext context, bool isExpanded) {
+                            return Container(
+                              height: 0,
+                              child: ListTile(
+                                trailing: Icon(
+                                  Icons.close,
+                                  color: Colors.red,
+                                ),
+                                title: Text(
+                                  'Certificate Verification',
+                                ),
+                              ),
+                            );
+                          },
+                          body: Container(
+                            // height: 60,
+                            child: ListTile(
+                              title: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(children: [
+                                    Text("Verification :"),
+                                    Text(
+                                      " Failed",
+                                      style: TextStyle(
+                                          color: Colors.red,
+                                          fontWeight: FontWeight.bold),
+                                    )
+                                  ]),
+                                ],
+                              ),
+                              subtitle: Container(
+                                  margin: EdgeInsets.only(top: 20),
+                                  child: Text(
+                                      "DOB doesnt match with BirthCertificate")),
+                            ),
+                          ),
+                          isExpanded: isopen[1],
+                        ),
+                        ExpansionPanel(
+                          headerBuilder:
+                              (BuildContext context, bool isExpanded) {
+                            return Container(
+                              height: 0,
+                              child: ListTile(
+                                trailing: Icon(
+                                  Icons.hourglass_bottom,
+                                  color: Colors.orange,
+                                  size: 27,
+                                ),
+                                title: Text('Choice Filling'),
+                              ),
+                            );
+                          },
+                          body: Container(
+                            height: 60,
+                            child: ListTile(
+                              title: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(children: [
+                                    Text("Choices Freezed :"),
+                                    Text(
+                                      " Pending",
+                                      style: TextStyle(color: Colors.orange),
+                                    )
+                                  ]),
+                                ],
+                              ),
+                            ),
+                          ),
+                          isExpanded: isopen[2],
+                        ),
+                        ExpansionPanel(
+                          headerBuilder:
+                              (BuildContext context, bool isExpanded) {
+                            return Container(
+                              height: 0,
+                              child: ListTile(
+                                // trailing: Icon(
+                                //   Icons.check,
+                                //   color: Colors.green,
+                                //   size: 27,
+                                // ),
+                                title: Text('Tentative Allotment'),
+                              ),
+                            );
+                          },
+                          body: Container(
+                            height: 60,
+                            child: ListTile(
+                              title: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(children: [
+                                    Text("Alloted College :"),
+                                    Text(
+                                      " Pending",
+                                      style: TextStyle(color: Colors.orange),
+                                    )
+                                  ]),
+                                ],
+                              ),
+                            ),
+                          ),
+                          isExpanded: isopen[3],
+                        ),
+                        ExpansionPanel(
+                          headerBuilder:
+                              (BuildContext context, bool isExpanded) {
+                            return Container(
+                              height: 0,
+                              child: ListTile(
+                                // trailing: Icon(
+                                //   Icons.check,
+                                //   color: Colors.green,
+                                //   size: 27,
+                                // ),
+                                title: Text('Provisional Allotment'),
+                              ),
+                            );
+                          },
+                          body: Container(
+                            height: 60,
+                            child: ListTile(
+                              title: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(children: [
+                                    Text("Allotment :"),
+                                    Text(
+                                      " Pending",
+                                      style: TextStyle(color: Colors.orange),
+                                    )
+                                  ]),
+                                ],
+                              ),
+                            ),
+                          ),
+                          isExpanded: isopen[4],
+                        ),
+                      ],
+                    ),
+                  ]),
+            ),
+          )),
     );
   }
 }
